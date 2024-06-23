@@ -1,6 +1,6 @@
 import requests
 
-url = 'https://iosearch.reclameaqui.com.br/raichu-io-site-search-v1/complains/?company=790&status=PENDING&evaluated=bool:false&index=20&offset=10&order=created&orderType=desc&deleted=bool:false&fields=evaluated,title,solved,userName,status,created,id,description'
+url = 'https://iosearch.reclameaqui.com.br/raichu-io-site-search-v1/complains/?company=790&status=PENDING&evaluated=bool:false&index=0&offset=10&order=created&orderType=desc&deleted=bool:false&fields=evaluated,title,solved,userName,status,created,id,description'
 
 payload = {}
 headers = {
@@ -19,12 +19,13 @@ informacoes_extraidas = []
 for complain in complains:
     for item in complain:
         info = {
-            "created": item.get("created"),
-            "status": item.get("status"),
-            "title": item.get("title"),
-            "description": item.get("description"),
-            "solved": item.get("solved"),
-            "id": item.get("id")
+            "created": complain['created'],
+            "status": complain['status'],
+            "title": complain['title'],
+            "description": complain['description'],
+            "solved": complain['solved'],
+            "id": complain['id']
         }
         informacoes_extraidas.append(info)
+return informacoes_extraidas
 
