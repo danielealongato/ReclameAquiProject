@@ -20,10 +20,10 @@ def colect_complains():
             'Accept': '/',
             'Connection': 'keep-alive',
         }
-        time.sleep(2)
+        time.sleep(7)
         response = requests.request("GET", url, headers=headers, data=payload)
         print(page)
-        if response.status_code != 200 or page>200:
+        if response.status_code != 200 or page>50:
             break
 
         complains = response.json()["complainResult"]["complains"]["data"]

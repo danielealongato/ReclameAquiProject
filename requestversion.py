@@ -15,17 +15,18 @@ response = requests.request("GET", url, headers=headers, data=payload)
 complains = response.json()["data"]
 print(complains)
 
-informacoes_extraidas = []
-for complain in complains:
-    for item in complain:
-        info = {
-            "created": complain['created'],
-            "status": complain['status'],
-            "title": complain['title'],
-            "description": complain['description'],
-            "solved": complain['solved'],
-            "id": complain['id']
-        }
-        informacoes_extraidas.append(info)
-return informacoes_extraidas
+def transform_data():
+    informacoes_extraidas = []
+        for complain in complains:
+            for item in complain:
+                info = {
+                    "created": complain['created'],
+                    "status": complain['status'],
+                    "title": complain['title'],
+                    "description": complain['description'],
+                    "solved": complain['solved'],
+                    "id": complain['id']
+                }
+            informacoes_extraidas.append(info)
+    return informacoes_extraidas
 
